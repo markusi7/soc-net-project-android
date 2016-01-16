@@ -2,7 +2,7 @@ package imarkusi.soc_net_project.networking;
 
 import imarkusi.soc_net_project.R;
 import imarkusi.soc_net_project.SocNetApp;
-import imarkusi.soc_net_project.mvp.presenters.BaseInteractor;
+import imarkusi.soc_net_project.mvp.interactors.BaseInteractor;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 
