@@ -6,4 +6,10 @@
     <string name="loading">Loading</string>
     <string name="error">Error</string>
     <string name="ok">OK</string>
+
+    <string name="facebook_app_id">1639506919647852</string>
+    <string name="facebook_login">Facebook login</string>
+    <string name="facebook_api_version">v2.5</string>
+
+    <string name="login_text">Click here to login with Facebook</string>
 </resources>
