@@ -40,10 +40,10 @@ android {
         def API_URL = "API_URL"
 
         mock {
-            buildConfigField STRING, API_URL, '"http://demo4091250.mockable.io/api/v1"'
+            buildConfigField STRING, API_URL, '"http://demo4091250.mockable.io/api/"'
         }
         production {
-            buildConfigField STRING, API_URL, '"TODO"'
+            buildConfigField STRING, API_URL, '"https://sleepy-escarpment-6396.herokuapp.com/api/"'
         }
     }
 
