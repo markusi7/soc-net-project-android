@@ -38,4 +38,11 @@
     <string name="date_released">Date Released</string>
     <string name="genres">Genres</string>
     <string name="overview">Overview</string>
+    <string name="comments">Comments</string>
+    <string name="comments_placeholder">No comments yet.\nBe the first to comment!</string>
+    <string name="rating">Rating</string>
+    <string name="enter_comment">Enter comment here…</string>
+    <string name="post_comment">Post comment</string>
+    <string name="rate_it">Rate it!</string>
+    <string name="not_rated">Please choose rating first!</string>
 </resources>

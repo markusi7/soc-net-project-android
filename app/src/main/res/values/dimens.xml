@@ -26,4 +26,5 @@
     <dimen name="item_occasion_width">130dp</dimen>
     <dimen name="item_occasion_height">180dp</dimen>
     <dimen name="app_bar_layout_height">256dp</dimen>
+    <dimen name="vertical_List_item_padding">2dp</dimen>
 </resources>

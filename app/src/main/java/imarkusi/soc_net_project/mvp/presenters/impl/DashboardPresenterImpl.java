@@ -38,6 +38,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
             }
             if (response.getName() != null && !response.getName().isEmpty()) {
                 view.showName(response.getName());
+                PreferencesHelper.setUsername(response.getName());
             }
             if (response.getEmail() != null && !response.getEmail().isEmpty()) {
                 view.showEmail(response.getEmail());

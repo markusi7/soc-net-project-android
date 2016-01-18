@@ -27,8 +27,8 @@ public class Movie {
     @SerializedName("release_date")
     private String releaseDate;
 
-//    @SerializedName("watched")
-//    List<>
+    @SerializedName("watched")
+    List<Comment> comments;
 
     private ViewType viewType;
 
@@ -64,11 +64,15 @@ public class Movie {
         return viewType;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
     public void setViewType(ViewType viewType) {
         this.viewType = viewType;
     }
 
     public enum ViewType {
-        MOVIE, HEADER;
+        MOVIE, HEADER
     }
 }

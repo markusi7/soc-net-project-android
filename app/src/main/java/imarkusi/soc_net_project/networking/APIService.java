@@ -4,6 +4,7 @@ import java.util.List;
 
 import imarkusi.soc_net_project.models.Movie;
 import imarkusi.soc_net_project.models.User;
+import imarkusi.soc_net_project.models.api.requests.CommentBody;
 import imarkusi.soc_net_project.models.api.requests.LoginRequest;
 import imarkusi.soc_net_project.models.api.responses.LoginResponse;
 import imarkusi.soc_net_project.models.api.responses.RecommendedMoviesResponse;
@@ -27,8 +28,8 @@ public interface APIService {
     String MOVIES = "/movies";
     String SEARCH = MOVIES + "/search";
     String WATCH_LIST = MOVIES + "/watchlist";
-    String WATCHED_LIST = MOVIES + "/watched";
     String MOVIE = MOVIES +"/{movieId}";
+    String WATCHED = MOVIE + "/watched";
     String RECOMMENDED = MOVIES + "/recommended";
     String LIKED_LIST = MOVIES + "/liked";
 
@@ -55,4 +56,7 @@ public interface APIService {
 
     @GET(RECOMMENDED)
     void getRecommendedMovies(Callback<RecommendedMoviesResponse> callback);
+
+    @POST(WATCHED)
+    void postComment(@Path("movieId") String movieId, @Body CommentBody commentBody, Callback<Void> callback);
 }

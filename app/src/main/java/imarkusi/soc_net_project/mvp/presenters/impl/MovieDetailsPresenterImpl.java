@@ -1,8 +1,11 @@
 package imarkusi.soc_net_project.mvp.presenters.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import imarkusi.soc_net_project.adapters.MoviesAdapter;
+import imarkusi.soc_net_project.models.Comment;
 import imarkusi.soc_net_project.models.Movie;
 import imarkusi.soc_net_project.mvp.interactors.MovieDetailsInteractor;
 import imarkusi.soc_net_project.mvp.presenters.MovieDetailsPresenter;
@@ -39,6 +42,10 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
             if (response.getOverview() != null && !response.getOverview().isEmpty()) {
                 view.setOverview(response.getOverview());
             }
+            if (response.getComments() != null && !response.getComments().isEmpty()) {
+                view.displayComments(response.getComments());
+                view.setRating(calculateRating(response.getComments()));
+            }
         }
 
         @Override
@@ -47,11 +54,39 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
             view.showErrorMessage(errorMessage);
         }
     };
+    private BaseListener<Void> commentListener =
+            new BaseListener<Void>() {
+                @Override
+                public void onSuccess(Void response) {
+                    view.hideProgress();
+                    view.onMovieCommentUpdated();
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+                    view.hideProgress();
+                    view.showErrorMessage(errorMessage);
+                }
+            };
 
     @Inject
     public MovieDetailsPresenterImpl(MovieDetailsView view, MovieDetailsInteractor interactor) {
         this.view = view;
         this.interactor = interactor;
+    }
+
+    private String calculateRating(List<Comment> comments) {
+        float sum = 0;
+        int count = comments.size();
+        for (Comment comment : comments) {
+            sum += comment.getRating();
+        }
+        return "" + (sum / count);
+    }
+
+    @Override
+    public void postComment(String movieId, String comment, String rating) {
+        interactor.postComment(movieId, comment, rating, commentListener);
     }
 
     @Override

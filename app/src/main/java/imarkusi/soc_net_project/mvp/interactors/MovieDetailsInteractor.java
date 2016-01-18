@@ -9,4 +9,6 @@ import imarkusi.soc_net_project.networking.BaseListener;
 public interface MovieDetailsInteractor extends BaseInteractor {
 
     void getMovie(String movieId, BaseListener<Movie> listener);
+
+    void postComment(String movieId, String comment, String rating, BaseListener<Void> listener);
 }

@@ -6,4 +6,6 @@ package imarkusi.soc_net_project.mvp.presenters;
 public interface MovieDetailsPresenter extends BasePresenter {
 
     void getMovieDetails(String movieId);
+
+    void postComment(String movieId, String comment, String  rating);
 }

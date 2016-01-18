@@ -69,68 +69,139 @@
         android:padding="@dimen/default_padding"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/MovieDataKey"
+                        android:text="@string/title"/>
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:singleLine="true"
+                        style="@style/MovieDataValue"
+                        tools:text="Inception"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/MovieDataKey"
+                        android:text="@string/date_released"/>
+
+                    <TextView
+                        android:id="@+id/date_released"
+                        style="@style/MovieDataValue"
+                        tools:text="19.11.2421"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/MovieDataKey"
+                        android:text="@string/genres"/>
+
+                    <TextView
+                        android:id="@+id/genres"
+                        style="@style/MovieDataValue"
+                        tools:text="Comedy, Horror"/>
+
+                </LinearLayout>
 
                 <TextView
                     style="@style/MovieDataKey"
-                    android:text="@string/title"/>
+                    android:text="@string/overview"/>
 
                 <TextView
-                    android:id="@+id/title"
-                    android:singleLine="true"
+                    android:id="@+id/overview"
                     style="@style/MovieDataValue"
-                    tools:text="Inception"/>
+                    android:padding="@dimen/default_padding"/>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    <TextView
+                        style="@style/MovieDataKey"
+                        android:text="@string/rating"/>
+
+                    <TextView
+                        android:id="@+id/rating"
+                        style="@style/MovieDataValue"
+                        tools:text="2.3"/>
+
+                </LinearLayout>
+
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:stepSize="0.1"/>
+
+                <Button
+                    android:id="@+id/rating_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rate_it"/>
 
                 <TextView
                     style="@style/MovieDataKey"
-                    android:text="@string/date_released"/>
+                    android:text="@string/comments"/>
 
                 <TextView
-                    android:id="@+id/date_released"
-                    style="@style/MovieDataValue"
-                    tools:text="19.11.2421"/>
+                    android:id="@+id/comments_placehodler"
+                    android:text="@string/comments_placeholder"
+                    style="@style/MovieDataValue"/>
+
+                <LinearLayout
+                    android:id="@+id/comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
+                <EditText
+                    android:id="@+id/comment_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/default_padding"
+                    android:hint="@string/enter_comment"/>
+
+                <Button
+                    android:id="@+id/comment_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/post_comment"/>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/add_to_list"
+                android:visibility="gone"
+                app:layout_anchorGravity="bottom"
+                android:src="@drawable/add_to_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    style="@style/MovieDataKey"
-                    android:text="@string/genres"/>
+        </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/genres"
-                    style="@style/MovieDataValue"
-                    tools:text="Comedy, Horror"/>
-
-            </LinearLayout>
-
-            <TextView
-                style="@style/MovieDataKey"
-                android:text="@string/overview"/>
-
-            <TextView
-                android:id="@+id/overview"
-                style="@style/MovieDataValue"
-                android:padding="@dimen/default_padding"/>
-
-        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
