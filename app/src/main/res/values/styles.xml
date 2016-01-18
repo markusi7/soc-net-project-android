@@ -1,18 +1,12 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
         <item name="android:textColorPrimary">@color/primary_text</item>
         <item name="android:textColorSecondary">@color/secondary_text</item>
     </style>
-
-    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
 
     <style name="TransparentAlertDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -21,6 +15,27 @@
         <item name="android:backgroundDimAmount">0.4</item>
         <item name="android:width">300dip</item>
         <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="MaterialSearchViewStyle">
+        <!-- Background for the search bar-->
+        <item name="searchBackground">@color/primary</item>
+        <!-- Change voice icon-->
+        <item name="searchVoiceIcon">@drawable/ic_action_voice_search_inverted</item>
+        <!-- Change clear text icon-->
+        <item name="searchCloseIcon">@drawable/ic_action_navigation_close_inverted</item>
+        <!-- Change up icon-->
+        <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back_inverted</item>
+        <!-- Change icon for the suggestions-->
+        <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>
+        <!-- Change background for the suggestions list view-->
+        <item name="searchSuggestionBackground">@android:color/white</item>
+        <!-- Change text color for edit text. This will also be the color of the cursor-->
+        <item name="android:textColor">@android:color/white</item>
+        <!-- Change hint text color for edit text-->
+        <item name="android:textColorHint">@android:color/white</item>
+        <!-- Hint for edit text-->
+        <item name="android:hint">@string/search_hint</item>
     </style>
 
 </resources>

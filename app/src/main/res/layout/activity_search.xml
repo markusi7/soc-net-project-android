@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_below="@+id/toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"/>
+
+    <TextView
+        android:id="@+id/search_list_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_container"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:padding="@dimen/larger_padding"
+        android:layout_centerHorizontal="true"
+        android:drawablePadding="@dimen/default_padding"
+        android:drawableTop="@drawable/search_placeholder"
+        android:text="@string/search_list_placeholder"/>
+
+    <!-- Must be last for right layering display -->
+    <FrameLayout
+        android:id="@+id/toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:background="@color/primary"/>
+
+        <com.miguelcatalan.materialsearchview.MaterialSearchView
+            android:id="@+id/search_view"
+            style="@style/MaterialSearchViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+</RelativeLayout>

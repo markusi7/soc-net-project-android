@@ -5,7 +5,6 @@
 
     <application
         android:name=".SocNetApp"
-        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
@@ -22,13 +21,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.LoginActivity" android:theme="@style/NoActionBar"/>
+        <activity android:name=".activities.LoginActivity"/>
 
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <activity android:name=".activities.SearchActivity"/>
 
     </application>
 
