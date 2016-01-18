@@ -26,6 +26,7 @@ public interface APIService {
     String SEARCH = MOVIES + "/search";
     String WATCH_LIST = MOVIES + "/watched";
     String RECOMMENDED = MOVIES + "/recommended";
+    String LIKED_LIST = MOVIES + "/liked";
 
     @POST(LOGIN)
     void loginUser(@Body LoginRequest loginBody, Callback<LoginResponse> callback);
@@ -41,6 +42,9 @@ public interface APIService {
 
     @GET(WATCH_LIST)
     void getWatchList(Callback<List<Movie>> callback);
+
+    @GET(LIKED_LIST)
+    void getLikedList(Callback<List<Movie>> callback);
 
     @GET(RECOMMENDED)
     void getRecommendedMovies(Callback<List<Movie>> callback);

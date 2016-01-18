@@ -26,10 +26,11 @@
     <string name="logout">Logout</string>
 
     <string name="imdb_top_20">IMDB Top 20</string>
-    <string name="recommended_by_actors">Recommended by actors</string>
+    <string name="recommended">Recommended</string>
 
     <string name="confirm_logout">Are you sure you want to log out?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="no_watch_list">You currently don\'t have any movies on your watch list.\nExplore content by swiping right!</string>
+    <string name="liked_list">Facebook Liked Movies</string>
 </resources>

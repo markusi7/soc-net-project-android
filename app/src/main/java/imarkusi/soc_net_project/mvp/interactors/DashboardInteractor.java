@@ -16,4 +16,6 @@ public interface DashboardInteractor extends BaseInteractor {
     void logout(BaseListener<Void> listener);
 
     void getWatchList(BaseListener<List<Movie>> listener);
+
+    void getLikedList(BaseListener<List<Movie>> listener);
 }

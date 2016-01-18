@@ -91,7 +91,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
             PreferencesHelper.saveFacebookToken(AccessToken.getCurrentAccessToken().getToken());
             presenter.login(AccessToken.getCurrentAccessToken().getToken());
         } else {
-            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"));
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email", "user_likes"));
         }
     }
 }

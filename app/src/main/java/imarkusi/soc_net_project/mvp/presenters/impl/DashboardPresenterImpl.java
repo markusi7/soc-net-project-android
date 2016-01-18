@@ -24,7 +24,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
 
     final DashboardInteractor interactor;
 
-    private static final int API_CALLS = 2;
+    private static final int API_CALLS = 3;
 
     private AtomicInteger counter = new AtomicInteger();
 
@@ -73,6 +73,22 @@ public class DashboardPresenterImpl implements DashboardPresenter {
         }
     };
 
+    private BaseListener<List<Movie>> likedListListener = new BaseListener<List<Movie>>() {
+        @Override
+        public void onSuccess(List<Movie> response) {
+            onCallFinished();
+            if (response != null && !response.isEmpty()) {
+                view.showLikedList(response);
+            }
+        }
+
+        @Override
+        public void onFailure(String errorMessage) {
+            onCallFinished();
+            view.showErrorMessage(errorMessage);
+        }
+    };
+
     private BaseListener<Void> logoutListener = new BaseListener<Void>() {
         @Override
         public void onSuccess(Void response) {
@@ -99,6 +115,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
         counter.set(API_CALLS);
         interactor.getUser(userListener);
         interactor.getWatchList(watchListListener);
+        interactor.getLikedList(likedListListener);
     }
 
     @Override

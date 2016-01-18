@@ -23,6 +23,7 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import imarkusi.soc_net_project.R;
 import imarkusi.soc_net_project.activities.LoginActivity;
+import imarkusi.soc_net_project.adapters.LikedMoviesAdapter;
 import imarkusi.soc_net_project.adapters.SearchAdapter;
 import imarkusi.soc_net_project.custom.ItemClickListener;
 import imarkusi.soc_net_project.dagger.components.DaggerDashboardComponent;
@@ -53,7 +54,13 @@ public class DashboardFragment extends BaseFragment implements DashboardView {
     View watchListHeader;
 
     @Bind(R.id.watch_list)
-    RecyclerView list;
+    RecyclerView watchList;
+
+    @Bind(R.id.liked_list_header)
+    View likedListHeader;
+
+    @Bind(R.id.liked_list)
+    RecyclerView likedList;
 
     @Bind(R.id.empty_watch_list_placeholder)
     View emptyWatchListPlaceholder;
@@ -116,11 +123,20 @@ public class DashboardFragment extends BaseFragment implements DashboardView {
 
     @Override
     public void showWatchList(List<Movie> movies) {
+        watchList.setVisibility(View.VISIBLE);
         SearchAdapter adapter = new SearchAdapter(movies, itemClickListener);
-        list.setAdapter(new SlideInRightAnimationAdapter(new AlphaInAnimationAdapter(adapter)));
-        list.setLayoutManager(new LinearLayoutManager(getActivity()));
-        list.setVisibility(View.VISIBLE);
+        watchList.setAdapter(new SlideInRightAnimationAdapter(new AlphaInAnimationAdapter(adapter)));
+        watchList.setLayoutManager(new LinearLayoutManager(getActivity()));
         emptyWatchListPlaceholder.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLikedList(List<Movie> movies) {
+        likedList.setVisibility(View.VISIBLE);
+        LikedMoviesAdapter adapter = new LikedMoviesAdapter(movies, itemClickListener);
+        likedList.setAdapter(new SlideInRightAnimationAdapter(new AlphaInAnimationAdapter(adapter)));
+        likedList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        likedListHeader.setVisibility(View.VISIBLE);
     }
 
     @Override
