@@ -34,4 +34,8 @@
     <string name="no_watch_list">You currently don\'t have any movies in your watch list.\nExplore content by swiping right!</string>
     <string name="liked_list">Facebook Liked Movies</string>
     <string name="top_rated">Top Rated Movies</string>
+    <string name="title">Title</string>
+    <string name="date_released">Date Released</string>
+    <string name="genres">Genres</string>
+    <string name="overview">Overview</string>
 </resources>

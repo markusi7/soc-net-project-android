@@ -30,6 +30,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
         <activity android:name=".activities.SearchActivity"/>
+        <activity android:name=".activities.MovieDetailsActivity"/>
 
     </application>
 

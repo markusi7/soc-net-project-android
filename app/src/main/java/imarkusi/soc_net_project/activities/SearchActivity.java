@@ -37,8 +37,6 @@ import jp.wasabeef.recyclerview.adapters.SlideInRightAnimationAdapter;
  */
 public class SearchActivity extends BaseActivity implements SearchView {
 
-    public static final String MOVIE_ID = "movie_id";
-
     private static final int DELAY = 500;
 
     @Bind(R.id.list)
@@ -57,7 +55,7 @@ public class SearchActivity extends BaseActivity implements SearchView {
         @Override
         public void onItemClick(Movie item) {
             Intent intent = new Intent();
-            intent.putExtra(MOVIE_ID, item.getId());
+            intent.putExtra(MovieDetailsActivity.MOVIE_ID, item.getId());
             setResult(RESULT_OK, intent);
             finish();
         }

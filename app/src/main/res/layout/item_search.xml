@@ -28,7 +28,7 @@
             android:paddingBottom="@dimen/smaller_padding">
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Inception"

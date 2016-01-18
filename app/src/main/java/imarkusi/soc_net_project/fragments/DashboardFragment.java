@@ -23,6 +23,7 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import imarkusi.soc_net_project.R;
 import imarkusi.soc_net_project.activities.LoginActivity;
+import imarkusi.soc_net_project.activities.MovieDetailsActivity;
 import imarkusi.soc_net_project.adapters.LikedMoviesAdapter;
 import imarkusi.soc_net_project.adapters.MoviesAdapter;
 import imarkusi.soc_net_project.custom.ItemClickListener;
@@ -71,7 +72,7 @@ public class DashboardFragment extends BaseFragment implements DashboardView {
     private ItemClickListener<Movie> itemClickListener = new ItemClickListener<Movie>() {
         @Override
         public void onItemClick(Movie item) {
-
+            startActivity(MovieDetailsActivity.newIntent(getActivity(), item.getId()));
         }
     };
 

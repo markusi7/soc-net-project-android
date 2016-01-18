@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import imarkusi.soc_net_project.R;
+import imarkusi.soc_net_project.activities.MovieDetailsActivity;
 import imarkusi.soc_net_project.adapters.ExploreListAdapter;
 import imarkusi.soc_net_project.custom.ItemClickListener;
 import imarkusi.soc_net_project.dagger.components.DaggerExploreComponent;
@@ -39,7 +40,7 @@ public class ExploreFragment extends BaseFragment implements ExploreView {
     private ItemClickListener<Movie> itemClickListener = new ItemClickListener<Movie>() {
         @Override
         public void onItemClick(Movie item) {
-
+            startActivity(MovieDetailsActivity.newIntent(getActivity(), item.getId()));
         }
     };
 

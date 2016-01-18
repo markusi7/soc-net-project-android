@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_SEARCH && resultCode == RESULT_OK) {
-            //TODO fetch movie by id
+            startActivity(MovieDetailsActivity.newIntent(this, data.getStringExtra(MovieDetailsActivity.MOVIE_ID)));
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

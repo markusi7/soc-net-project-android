@@ -27,6 +27,9 @@ public class Movie {
     @SerializedName("release_date")
     private String releaseDate;
 
+//    @SerializedName("watched")
+//    List<>
+
     private ViewType viewType;
 
     public String getId() {

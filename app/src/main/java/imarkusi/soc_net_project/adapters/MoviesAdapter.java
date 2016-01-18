@@ -67,6 +67,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public static void setGenres(TextView genresTextView, List<String> genres) {
+        genresTextView.setText(generateGenresText(genres));
+    }
+
+    public static String generateGenresText(List<String> genres){
         String output = "";
         final String comma = ", ";
         for (String genre : genres) {
@@ -75,7 +79,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (genres.size() > 0) {
             output = output.substring(0, output.length() - comma.length());
         }
-        genresTextView.setText(output);
+        return output;
     }
 
 
@@ -92,7 +96,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         @Bind(R.id.poster)
         ImageView poster;
 
-        @Bind(R.id.title)
+        @Bind(R.id.header)
         TextView title;
 
         @Bind(R.id.genres)

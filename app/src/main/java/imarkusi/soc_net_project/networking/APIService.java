@@ -11,6 +11,7 @@ import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 /**
@@ -27,6 +28,7 @@ public interface APIService {
     String SEARCH = MOVIES + "/search";
     String WATCH_LIST = MOVIES + "/watchlist";
     String WATCHED_LIST = MOVIES + "/watched";
+    String MOVIE = MOVIES +"/{movieId}";
     String RECOMMENDED = MOVIES + "/recommended";
     String LIKED_LIST = MOVIES + "/liked";
 
@@ -44,6 +46,9 @@ public interface APIService {
 
     @GET(WATCH_LIST)
     void getWatchList(Callback<List<Movie>> callback);
+
+    @GET(MOVIE)
+    void getMovie(@Path("movieId") String movieId, Callback<Movie> callback);
 
     @GET(LIKED_LIST)
     void getLikedList(Callback<List<Movie>> callback);
