@@ -5,6 +5,7 @@ import dagger.Provides;
 import imarkusi.soc_net_project.mvp.interactors.ExploreInteractor;
 import imarkusi.soc_net_project.mvp.interactors.impl.ExploreInteractorImpl;
 import imarkusi.soc_net_project.mvp.presenters.ExplorePresenter;
+import imarkusi.soc_net_project.mvp.presenters.impl.ExplorePresenterImpl;
 import imarkusi.soc_net_project.mvp.views.ExploreView;
 
 /**
@@ -25,7 +26,7 @@ public class ExploreModule {
     }
 
     @Provides
-    public ExplorePresenter providePresenter(ExplorePresenter presenter){
+    public ExplorePresenter providePresenter(ExplorePresenterImpl presenter){
         return presenter;
     }
 

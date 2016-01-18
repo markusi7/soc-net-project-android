@@ -27,6 +27,8 @@ public class Movie {
     @SerializedName("release_date")
     private String releaseDate;
 
+    private ViewType viewType;
+
     public String getId() {
         return id;
     }
@@ -43,11 +45,27 @@ public class Movie {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public List<String > getGenres() {
         return genres;
     }
 
     public String getReleaseDate() {
         return releaseDate;
+    }
+
+    public ViewType getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(ViewType viewType) {
+        this.viewType = viewType;
+    }
+
+    public enum ViewType {
+        MOVIE, HEADER;
     }
 }

@@ -24,7 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import imarkusi.soc_net_project.R;
 import imarkusi.soc_net_project.activities.LoginActivity;
 import imarkusi.soc_net_project.adapters.LikedMoviesAdapter;
-import imarkusi.soc_net_project.adapters.SearchAdapter;
+import imarkusi.soc_net_project.adapters.MoviesAdapter;
 import imarkusi.soc_net_project.custom.ItemClickListener;
 import imarkusi.soc_net_project.dagger.components.DaggerDashboardComponent;
 import imarkusi.soc_net_project.dagger.modules.DashboardModule;
@@ -124,7 +124,8 @@ public class DashboardFragment extends BaseFragment implements DashboardView {
     @Override
     public void showWatchList(List<Movie> movies) {
         watchList.setVisibility(View.VISIBLE);
-        SearchAdapter adapter = new SearchAdapter(movies, itemClickListener);
+        MoviesAdapter adapter = new MoviesAdapter(movies, itemClickListener);
+        watchList.setHasFixedSize(true);
         watchList.setAdapter(new SlideInRightAnimationAdapter(new AlphaInAnimationAdapter(adapter)));
         watchList.setLayoutManager(new LinearLayoutManager(getActivity()));
         emptyWatchListPlaceholder.setVisibility(View.GONE);
@@ -134,6 +135,7 @@ public class DashboardFragment extends BaseFragment implements DashboardView {
     public void showLikedList(List<Movie> movies) {
         likedList.setVisibility(View.VISIBLE);
         LikedMoviesAdapter adapter = new LikedMoviesAdapter(movies, itemClickListener);
+        likedList.setHasFixedSize(true);
         likedList.setAdapter(new SlideInRightAnimationAdapter(new AlphaInAnimationAdapter(adapter)));
         likedList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         likedListHeader.setVisibility(View.VISIBLE);

@@ -1,0 +1,6 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/header"
+    style="@style/ListHeader"
+    android:visibility="visible"
+    tools:text="@string/watch_list" />

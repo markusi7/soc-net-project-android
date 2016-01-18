@@ -20,13 +20,13 @@ import imarkusi.soc_net_project.models.Movie;
 /**
  * Created by markusi on 18/01/16.
  */
-public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Movie> items;
 
     private ItemClickListener<Movie> clickListener;
 
-    public SearchAdapter(List<Movie> items, ItemClickListener<Movie> clickListener) {
+    public MoviesAdapter(List<Movie> items, ItemClickListener<Movie> clickListener) {
         this.items = items;
         this.clickListener = clickListener;
     }
@@ -55,7 +55,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         });
     }
 
-    private void setTitle(TextView titleTextView, String title, String releaseDate) {
+    public static void setTitle(TextView titleTextView, String title, String releaseDate) {
         String text = title;
         if (releaseDate != null && releaseDate.length() > 0) {
             final String[] splitReleaseDate = releaseDate.split("-");
@@ -66,7 +66,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         titleTextView.setText(text);
     }
 
-    private void setGenres(TextView genresTextView, List<String> genres) {
+    public static void setGenres(TextView genresTextView, List<String> genres) {
         String output = "";
         final String comma = ", ";
         for (String genre : genres) {

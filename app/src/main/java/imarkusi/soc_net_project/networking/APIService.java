@@ -6,6 +6,7 @@ import imarkusi.soc_net_project.models.Movie;
 import imarkusi.soc_net_project.models.User;
 import imarkusi.soc_net_project.models.api.requests.LoginRequest;
 import imarkusi.soc_net_project.models.api.responses.LoginResponse;
+import imarkusi.soc_net_project.models.api.responses.RecommendedMoviesResponse;
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -48,5 +49,5 @@ public interface APIService {
     void getLikedList(Callback<List<Movie>> callback);
 
     @GET(RECOMMENDED)
-    void getRecommendedMovies(Callback<List<Movie>> callback);
+    void getRecommendedMovies(Callback<RecommendedMoviesResponse> callback);
 }

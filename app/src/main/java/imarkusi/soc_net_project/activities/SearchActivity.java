@@ -22,7 +22,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import imarkusi.soc_net_project.R;
-import imarkusi.soc_net_project.adapters.SearchAdapter;
+import imarkusi.soc_net_project.adapters.MoviesAdapter;
 import imarkusi.soc_net_project.custom.ItemClickListener;
 import imarkusi.soc_net_project.dagger.components.DaggerSearchComponent;
 import imarkusi.soc_net_project.dagger.modules.SearchModule;
@@ -115,7 +115,7 @@ public class SearchActivity extends BaseActivity implements SearchView {
 
     @Override
     public void showMovies(List<Movie> movies) {
-        SearchAdapter adapter = new SearchAdapter(movies, itemClickListener);
+        MoviesAdapter adapter = new MoviesAdapter(movies, itemClickListener);
         list.setAdapter(new SlideInRightAnimationAdapter(new AlphaInAnimationAdapter(adapter)));
         list.setLayoutManager(new LinearLayoutManager(this));
         placeholder.setVisibility(View.GONE);

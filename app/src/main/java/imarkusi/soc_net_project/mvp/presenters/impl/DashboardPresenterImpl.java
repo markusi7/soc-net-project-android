@@ -57,22 +57,6 @@ public class DashboardPresenterImpl implements DashboardPresenter {
         }
     };
 
-    private BaseListener<List<Movie>> watchListListener = new BaseListener<List<Movie>>() {
-        @Override
-        public void onSuccess(List<Movie> response) {
-            onCallFinished();
-            if (response != null && !response.isEmpty()) {
-                view.showWatchList(response);
-            }
-        }
-
-        @Override
-        public void onFailure(String errorMessage) {
-            onCallFinished();
-            view.showErrorMessage(errorMessage);
-        }
-    };
-
     private BaseListener<List<Movie>> likedListListener = new BaseListener<List<Movie>>() {
         @Override
         public void onSuccess(List<Movie> response) {

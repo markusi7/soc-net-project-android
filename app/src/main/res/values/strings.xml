@@ -33,4 +33,5 @@
     <string name="no">No</string>
     <string name="no_watch_list">You currently don\'t have any movies in your watch list.\nExplore content by swiping right!</string>
     <string name="liked_list">Facebook Liked Movies</string>
+    <string name="top_rated">Top Rated Movies</string>
 </resources>
