@@ -10,9 +10,9 @@ import imarkusi.soc_net_project.SocNetApp;
  */
 public class PreferencesHelper {
 
+    public static final String USER_ID = "user_id";
     private static final String FACEBOOK_TOKEN = "facebook_token";
     private static final String AUTH_TOKEN = "auth_token";
-
     private static SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SocNetApp.getInstance());
     private static SharedPreferences.Editor edit;
 
@@ -29,6 +29,14 @@ public class PreferencesHelper {
 
     public static void saveAuthToken(String authToken) {
         saveStringToPreferences(authToken, AUTH_TOKEN);
+    }
+
+    public static String getUserId() {
+        return getStringFromPreferences(USER_ID);
+    }
+
+    public static void saveUserId(String userId) {
+        saveStringToPreferences(userId, USER_ID);
     }
 
     public static void deleteAllSharedPreferences() {

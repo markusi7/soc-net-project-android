@@ -3,6 +3,7 @@ package imarkusi.soc_net_project.fragments;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,6 +28,7 @@ import imarkusi.soc_net_project.custom.ItemClickListener;
 import imarkusi.soc_net_project.dagger.components.DaggerDashboardComponent;
 import imarkusi.soc_net_project.dagger.modules.DashboardModule;
 import imarkusi.soc_net_project.helpers.ImageHelper;
+import imarkusi.soc_net_project.helpers.PreferencesHelper;
 import imarkusi.soc_net_project.models.Movie;
 import imarkusi.soc_net_project.mvp.presenters.DashboardPresenter;
 import imarkusi.soc_net_project.mvp.views.DashboardView;
@@ -125,5 +127,13 @@ public class DashboardFragment extends BaseFragment implements DashboardView {
     public void onLogoutSuccessful() {
         getActivity().finish();
         startActivity(new Intent(getActivity(), LoginActivity.class));
+    }
+
+    @OnClick(R.id.profile_image)
+    void onProfileImageClicked(){
+        final String facebookUrl = "https://www.facebook.com/";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(facebookUrl + PreferencesHelper.getUserId()));
+        startActivity(intent);
     }
 }

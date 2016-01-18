@@ -17,7 +17,7 @@
     <string name="login_text">Click here to login with Facebook</string>
 
     <string name="search">Search</string>
-    <string name="search_list_placeholder">Enter a movie title to search</string>
+    <string name="search_list_placeholder">Enter a movie title to search!</string>
     <string name="search_list_empty">Sorry, no movies found :(</string>
 
     <string name="dashboard">Dashboard</string>

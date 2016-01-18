@@ -33,6 +33,9 @@ public class DashboardPresenterImpl implements DashboardPresenter {
         public void onSuccess(User response) {
             onCallFinished();
             if (response.getId() != null && !response.getId().isEmpty()){
+                PreferencesHelper.saveUserId(response.getId());
+            }
+            if (response.getId() != null && !response.getId().isEmpty()){
                 String profilePictureUrl = String .format(SocNetApp.getInstance().getString(R.string.facebook_image_url),response.getId());
                 view.showProfilePicture(profilePictureUrl);
             }

@@ -1,79 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="@dimen/profile_picture_dimension"
-            android:layout_height="@dimen/profile_picture_dimension"
-            android:layout_margin="@dimen/smaller_padding"
-            app:civ_border_color="@color/accent"
-            app:civ_border_width="4dp"
-            tools:src="@drawable/camera_logo" />
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/profile_picture_dimension"
+                android:layout_height="@dimen/profile_picture_dimension"
+                android:layout_margin="@dimen/smaller_padding"
+                app:civ_border_color="@color/accent"
+                app:civ_border_width="4dp"
+                tools:src="@drawable/camera_logo" />
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Bobo Smrade" />
+
+            <TextView
+                android:id="@+id/profile_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="italic"
+                tools:text="bobo@mail.com" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Bobo Smrade" />
+            android:id="@+id/watch_list_header"
+            style="@style/ListHeader"
+            android:text="@string/watch_list"
+            tools:visibility="visible" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/watch_list"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/profile_email"
+            android:id="@+id/empty_watch_list_placeholder"
+            android:paddingTop="@dimen/default_padding"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingLeft="@dimen/largest_padding"
+            android:paddingRight="@dimen/largest_padding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_small"
-            android:textStyle="italic"
-            tools:text="bobo@mail.com" />
+            android:text="@string/no_watch_list"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/default_padding"
+                android:paddingRight="@dimen/largest_padding"
+                android:drawableTop="@drawable/logout"
+                android:text="@string/logout" />
+
+        </RelativeLayout>
+
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/watch_list_header"
-        style="@style/ListHeader"
-        android:text="@string/watch_list"
-        tools:visibility="visible" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/watch_list"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/empty_watch_list_placeholder"
-        android:paddingTop="@dimen/default_padding"
-        android:paddingBottom="@dimen/default_padding"
-        android:paddingLeft="@dimen/largest_padding"
-        android:paddingRight="@dimen/largest_padding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/no_watch_list"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="@dimen/large_margin"
-            android:drawableTop="@drawable/logout"
-            android:text="@string/logout" />
-
-    </RelativeLayout>
-
-
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>
