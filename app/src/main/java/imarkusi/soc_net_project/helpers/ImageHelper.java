@@ -18,9 +18,14 @@ public class ImageHelper {
     private ImageHelper() {
     }
 
-    public static void loadImageFromApi(ImageView view, String imageUrl) {
+    public static void loadPosterFromApi(ImageView view, String imageUrl) {
         String url = POSTER_BASE_URL + SIZE + imageUrl;
         Timber.d("url: %s", url);
         Glide.with(view.getContext()).load(url).crossFade().into(view);
+    }
+
+    public static void loadImage(ImageView view, String imageUrl) {
+        Timber.d("imageUrl: %s", imageUrl);
+        Glide.with(view.getContext()).load(imageUrl).crossFade().into(view);
     }
 }

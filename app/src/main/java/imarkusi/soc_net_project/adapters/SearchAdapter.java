@@ -42,7 +42,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ViewHolder viewHolder = (ViewHolder) holder;
         setTitle(viewHolder.title, item.getTitle(), item.getReleaseDate());
         if (item.getPosterUrl() != null) {
-            ImageHelper.loadImageFromApi(viewHolder.poster, item.getPosterUrl());
+            ImageHelper.loadPosterFromApi(viewHolder.poster, item.getPosterUrl());
         } else {
             viewHolder.poster.setImageDrawable(ContextCompat.getDrawable(viewHolder.poster.getContext(), R.drawable.movie_search_placeholder));
         }

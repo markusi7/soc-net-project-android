@@ -21,4 +21,5 @@
 
     <dimen name="search_poster_dimension">80dp</dimen>
     <dimen name="search_item_height">92dp</dimen>
+    <dimen name="profile_picture_dimension">128dp</dimen>
 </resources>

@@ -53,8 +53,6 @@ public class SearchActivity extends BaseActivity implements SearchView {
     @Inject
     SearchPresenter presenter;
 
-    String query;
-
     private ItemClickListener<Movie> itemClickListener = new ItemClickListener<Movie>() {
         @Override
         public void onItemClick(Movie item) {
@@ -82,8 +80,9 @@ public class SearchActivity extends BaseActivity implements SearchView {
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                SearchActivity.this.query = query;
-                presenter.search(query);
+                if (query != null && query.length() > 0) {
+                    presenter.search(query);
+                }
                 return true;
             }
 
@@ -139,15 +138,6 @@ public class SearchActivity extends BaseActivity implements SearchView {
                 searchView.showSearch();
             }
         }, DELAY);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (searchView.isSearchOpen()) {
-            searchView.closeSearch();
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override

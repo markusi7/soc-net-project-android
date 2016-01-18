@@ -2,8 +2,8 @@ package imarkusi.soc_net_project.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,16 +11,28 @@ import android.view.MenuItem;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import imarkusi.soc_net_project.R;
+import imarkusi.soc_net_project.custom.ViewPagerAdapter;
+import imarkusi.soc_net_project.custom.ViewPagerListener;
+import imarkusi.soc_net_project.fragments.DashboardFragment;
+import imarkusi.soc_net_project.fragments.ExploreFragment;
 import imarkusi.soc_net_project.helpers.PreferencesHelper;
+import imarkusi.soc_net_project.views.CustomTabLayout;
 
 /**
  * Created by markusi on 16/01/16.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     public static final int REQUEST_CODE_SEARCH = 0xB00B;
+
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+
+    @Bind(R.id.tab_layout)
+    CustomTabLayout tabLayout;
+
+    @Bind(R.id.view_pager)
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +44,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initToolbar();
+        initTabs();
+    }
+
+    private void initTabs() {
+        ViewPagerAdapter pagerAdapter =  new ViewPagerAdapter(getSupportFragmentManager());
+        pagerAdapter.addFragment(new DashboardFragment(), getString(R.string.dashboard));
+        pagerAdapter.addFragment(new ExploreFragment(), getString(R.string.explore));
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setCurrentItem(pagerAdapter.getTabIndex(), true);
+        tabLayout.setViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new ViewPagerListener(viewPager));
     }
 
     @Override

@@ -11,8 +11,25 @@
     <string name="facebook_login">Facebook login</string>
     <string name="facebook_api_version">v2.5</string>
 
+    <string name="bearer">Bearer %s</string>
+    <string name="facebook_image_url">https://graph.facebook.com/%s/picture?height=192&amp;width=192</string>
+
     <string name="login_text">Click here to login with Facebook</string>
+
     <string name="search">Search</string>
     <string name="search_list_placeholder">Enter a movie title to search</string>
     <string name="search_list_empty">Sorry, no movies found :(</string>
+
+    <string name="dashboard">Dashboard</string>
+    <string name="explore">Explore</string>
+    <string name="watch_list">Watch List</string>
+    <string name="logout">Logout</string>
+
+    <string name="imdb_top_20">IMDB Top 20</string>
+    <string name="recommended_by_actors">Recommended by actors</string>
+
+    <string name="confirm_logout">Are you sure you want to log out?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_watch_list">You currently don\'t have any movies on your watch list.\nExplore content by swiping right!</string>
 </resources>

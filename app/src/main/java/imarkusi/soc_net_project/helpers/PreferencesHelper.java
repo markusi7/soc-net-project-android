@@ -12,8 +12,6 @@ public class PreferencesHelper {
 
     private static final String FACEBOOK_TOKEN = "facebook_token";
     private static final String AUTH_TOKEN = "auth_token";
-    private static final String USERNAME = "username";
-    private static final String PROFILE_PICTURE_URL = "profile_picture_url";
 
     private static SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SocNetApp.getInstance());
     private static SharedPreferences.Editor edit;
@@ -31,22 +29,6 @@ public class PreferencesHelper {
 
     public static void saveAuthToken(String authToken) {
         saveStringToPreferences(authToken, AUTH_TOKEN);
-    }
-
-    public static String getUsername(){
-        return getStringFromPreferences(USERNAME);
-    }
-
-    public static void saveUsername(String username) {
-        saveStringToPreferences(username, USERNAME);
-    }
-
-    public static String getProfilePictureUrl(){
-        return getStringFromPreferences(PROFILE_PICTURE_URL);
-    }
-
-    public static void saveProfilePictureUrl(String url) {
-        saveStringToPreferences(url, PROFILE_PICTURE_URL);
     }
 
     public static void deleteAllSharedPreferences() {

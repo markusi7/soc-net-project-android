@@ -3,6 +3,7 @@ package imarkusi.soc_net_project.networking;
 import java.util.List;
 
 import imarkusi.soc_net_project.models.Movie;
+import imarkusi.soc_net_project.models.User;
 import imarkusi.soc_net_project.models.api.requests.LoginRequest;
 import imarkusi.soc_net_project.models.api.responses.LoginResponse;
 import retrofit.Callback;
@@ -19,12 +20,28 @@ import retrofit.http.Query;
 public interface APIService {
 
     String LOGIN = "/auth/facebook/token";
+    String LOGOUT = "/logout";
+    String USERS = "/users/me";
     String MOVIES = "/movies";
     String SEARCH = MOVIES + "/search";
+    String WATCH_LIST = MOVIES + "/watched";
+    String RECOMMENDED = MOVIES + "/recommended";
 
     @POST(LOGIN)
     void loginUser(@Body LoginRequest loginBody, Callback<LoginResponse> callback);
 
+    @GET(LOGOUT)
+    void logout(Callback<Void> callback);
+
+    @GET(USERS)
+    void getUser(Callback<User> callback);
+
     @GET(SEARCH)
     void search(@Query("query") String query, Callback<List<Movie>> callback);
+
+    @GET(WATCH_LIST)
+    void getWatchList(Callback<List<Movie>> callback);
+
+    @GET(RECOMMENDED)
+    void getRecommendedMovies(Callback<List<Movie>> callback);
 }

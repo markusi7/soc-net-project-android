@@ -12,7 +12,6 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -37,9 +36,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Inject
     LoginPresenter presenter;
 
-    String username;
-    String profilePicture;
-
     private CallbackManager callbackManager;
     private FacebookCallback<LoginResult> facebookCallback = new FacebookCallback<LoginResult>() {
         @Override
@@ -47,13 +43,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
             GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                 @Override
                 public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
-                    try {
-                        username = (String) jsonObject.get("name");
-                        String id = (String) jsonObject.get("id");
-                        profilePicture = "https://graph.facebook.com/" + id + "/picture";
-                    } catch (JSONException e) {
-                        Timber.e(e.getMessage());
-                    }
                     presenter.login(loginResult.getAccessToken().getToken());
                 }
             });
@@ -92,12 +81,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void onLoginSuccessful() {
-        if (username != null) {
-            PreferencesHelper.saveUsername(username);
-        }
-        if (profilePicture != null){
-            PreferencesHelper.saveProfilePictureUrl(profilePicture);
-        }
         finish();
         startActivity(new Intent(this, MainActivity.class));
     }

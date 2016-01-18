@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item"
-    android:background="@drawable/search_item_selector"
+    android:background="@android:drawable/dialog_holo_light_frame"
     android:layout_width="match_parent"
     android:layout_height="@dimen/search_item_height">
 
@@ -48,12 +48,5 @@
                 android:textSize="@dimen/text_size_small" />
         </LinearLayout>
     </LinearLayout>
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/horizontal_line_height"
-        android:background="@color/divider"
-        android:layout_below="@id/text" />
-
 </RelativeLayout>
 
