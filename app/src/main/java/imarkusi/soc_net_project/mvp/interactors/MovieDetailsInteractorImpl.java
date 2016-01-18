@@ -2,6 +2,7 @@ package imarkusi.soc_net_project.mvp.interactors;
 
 import imarkusi.soc_net_project.SocNetApp;
 import imarkusi.soc_net_project.models.Movie;
+import imarkusi.soc_net_project.models.api.requests.BlankBody;
 import imarkusi.soc_net_project.models.api.requests.CommentBody;
 import imarkusi.soc_net_project.networking.BaseListener;
 import imarkusi.soc_net_project.networking.RetrofitInteractor;
@@ -38,6 +39,32 @@ public class MovieDetailsInteractorImpl implements MovieDetailsInteractor {
                 }
             };
 
+    private RetrofitInteractor<String, Void, BaseListener<Void>> addToWatchListInteractor =
+            new RetrofitInteractor<String, Void, BaseListener<Void>>() {
+                @Override
+                protected void execute(Callback<Void> callback, String... params) {
+                    SocNetApp.getInstance().getApiService().addToWatchList(params[0], new BlankBody(""), callback);
+                }
+
+                @Override
+                protected void onSuccess(Void aVoid, BaseListener<Void> listener) {
+                    listener.onSuccess(aVoid);
+                }
+            };
+
+    private RetrofitInteractor<String, Void, BaseListener<Void>> removeFromWatchListInteractor =
+            new RetrofitInteractor<String, Void, BaseListener<Void>>() {
+                @Override
+                protected void execute(Callback<Void> callback, String... params) {
+                    SocNetApp.getInstance().getApiService().deleteFromWatchList(params[0], callback);
+                }
+
+                @Override
+                protected void onSuccess(Void aVoid, BaseListener<Void> listener) {
+                    listener.onSuccess(aVoid);
+                }
+            };
+
     @Override
     public void getMovie(String movieId, BaseListener<Movie> listener) {
         movieInteractor.execute(listener, movieId);
@@ -46,6 +73,16 @@ public class MovieDetailsInteractorImpl implements MovieDetailsInteractor {
     @Override
     public void postComment(String movieId, String comment, String rating, BaseListener<Void> listener) {
         commentInteractor.execute(listener, movieId, comment, rating);
+    }
+
+    @Override
+    public void removeFromWatchList(String movieId, BaseListener<Void> listener) {
+        removeFromWatchListInteractor.execute(listener, movieId);
+    }
+
+    @Override
+    public void addToWatchList(String movieId, BaseListener<Void> listener) {
+        addToWatchListInteractor.execute(listener, movieId);
     }
 
     @Override

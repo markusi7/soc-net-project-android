@@ -45,4 +45,6 @@
     <string name="post_comment">Post comment</string>
     <string name="rate_it">Rate it!</string>
     <string name="not_rated">Please choose rating first!</string>
+    <string name="movie_removed_from_watchlist">Movie removed from watchlist!</string>
+    <string name="movie_added_to_watchlist">Movie added to watchlist!</string>
 </resources>

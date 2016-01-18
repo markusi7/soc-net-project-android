@@ -1,6 +1,8 @@
 package imarkusi.soc_net_project.mvp.presenters.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.inject.Inject;
@@ -48,6 +50,11 @@ public class DashboardPresenterImpl implements DashboardPresenter {
             }
             if (response.getWatchlist() != null && !response.getWatchlist().isEmpty()) {
                 view.showWatchList(response.getWatchlist());
+                Set<String > ids = new HashSet<>();
+                for (Movie movie :response.getWatchlist()){
+                    ids.add(movie.getId());
+                }
+                PreferencesHelper.saveWatchlistIds(ids);
             }
         }
 

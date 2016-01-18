@@ -3,6 +3,8 @@ package imarkusi.soc_net_project.helpers;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import java.util.Set;
+
 import imarkusi.soc_net_project.SocNetApp;
 
 /**
@@ -14,6 +16,7 @@ public class PreferencesHelper {
     private static final String FACEBOOK_TOKEN = "facebook_token";
     private static final String AUTH_TOKEN = "auth_token";
     private static final String USERNAME = "username";
+    private static final String WATCHLIST_IDS = "watchlist_ids";
     private static SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SocNetApp.getInstance());
     private static SharedPreferences.Editor edit;
 
@@ -62,5 +65,15 @@ public class PreferencesHelper {
 
     private static String getStringFromPreferences(String name) {
         return preferences.getString(name, null);
+    }
+
+    public static Set<String> getWatchListIds() {
+        return preferences.getStringSet(WATCHLIST_IDS, null);
+    }
+
+    public static void saveWatchlistIds(Set<String> ids) {
+        edit = preferences.edit();
+        edit.putStringSet(WATCHLIST_IDS, ids);
+        edit.apply();
     }
 }

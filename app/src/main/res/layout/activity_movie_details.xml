@@ -69,10 +69,6 @@
         android:padding="@dimen/default_padding"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -192,17 +188,15 @@
 
             </LinearLayout>
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/add_to_list"
-                android:visibility="gone"
-                app:layout_anchorGravity="bottom"
-                android:src="@drawable/add_to_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </RelativeLayout>
-
-
     </android.support.v4.widget.NestedScrollView>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_to_watch_list"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="@dimen/default_padding"
+        tools:src="@drawable/add_to_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </android.support.design.widget.CoordinatorLayout>

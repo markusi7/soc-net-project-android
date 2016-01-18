@@ -15,19 +15,6 @@ import retrofit.Callback;
  */
 public class DashboardInteractorImpl implements DashboardInteractor {
 
-    private RetrofitInteractor<Void,List<Movie>,BaseListener<List<Movie>>> watchListInteractor =
-            new RetrofitInteractor<Void, List<Movie>, BaseListener<List<Movie>>>() {
-                @Override
-                protected void execute(Callback<List<Movie>> callback, Void... params) {
-                    SocNetApp.getInstance().getApiService().getWatchList(callback);
-                }
-
-                @Override
-                protected void onSuccess(List<Movie> movies, BaseListener<List<Movie>> listener) {
-                    listener.onSuccess(movies);
-                }
-            };
-
     private RetrofitInteractor<Void,List<Movie>,BaseListener<List<Movie>>> likedListIneractor =
             new RetrofitInteractor<Void, List<Movie>, BaseListener<List<Movie>>>() {
                 @Override
@@ -78,11 +65,6 @@ public class DashboardInteractorImpl implements DashboardInteractor {
     }
 
     @Override
-    public void getWatchList(BaseListener<List<Movie>> listener) {
-        watchListInteractor.execute(listener);
-    }
-
-    @Override
     public void getLikedList(BaseListener<List<Movie>> listener) {
         likedListIneractor.execute(listener);
     }
@@ -90,7 +72,6 @@ public class DashboardInteractorImpl implements DashboardInteractor {
     @Override
     public void cancel() {
         userInteractor.cancel();
-        watchListInteractor.cancel();
         likedListIneractor.cancel();
         logoutInteractor.cancel();
     }
@@ -98,7 +79,6 @@ public class DashboardInteractorImpl implements DashboardInteractor {
     @Override
     public void reset() {
         userInteractor.reset();
-        watchListInteractor.reset();
         likedListIneractor.reset();
         logoutInteractor.reset();
     }

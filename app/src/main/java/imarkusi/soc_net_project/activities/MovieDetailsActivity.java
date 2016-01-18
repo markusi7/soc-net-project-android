@@ -3,9 +3,13 @@ package imarkusi.soc_net_project.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -80,6 +84,9 @@ public class MovieDetailsActivity extends BaseActivity implements MovieDetailsVi
 
     @Bind(R.id.comment_edit_text)
     EditText commentEditText;
+
+    @Bind(R.id.add_to_watch_list)
+    FloatingActionButton addToWatchListButton;
 
     @Inject
     MovieDetailsPresenter presenter;
@@ -163,9 +170,19 @@ public class MovieDetailsActivity extends BaseActivity implements MovieDetailsVi
     }
 
     @Override
+    public void setFloatingActionButtonDrawable(@DrawableRes int drawableResId) {
+        addToWatchListButton.setImageDrawable(ContextCompat.getDrawable(this, drawableResId));
+    }
+
+    @Override
     public void onMovieCommentUpdated() {
         commentEditText.setText("");
         presenter.getMovieDetails(movieId);
+    }
+
+    @Override
+    public void showSnackbar(@StringRes int stringResId) {
+        Snackbar.make(appBarLayout, stringResId, Snackbar.LENGTH_LONG);
     }
 
     @Override
@@ -196,6 +213,7 @@ public class MovieDetailsActivity extends BaseActivity implements MovieDetailsVi
     }
 
     @OnClick(R.id.add_to_watch_list)
-    void addToWatchList(){
+    void addToWatchList() {
+        presenter.toggleWatchList(movieId);
     }
 }

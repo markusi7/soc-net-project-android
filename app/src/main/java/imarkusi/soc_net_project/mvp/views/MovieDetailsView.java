@@ -1,5 +1,8 @@
 package imarkusi.soc_net_project.mvp.views;
 
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
+
 import java.util.List;
 
 import imarkusi.soc_net_project.models.Comment;
@@ -23,5 +26,9 @@ public interface MovieDetailsView extends BaseView {
 
     void displayComments(List<Comment> comments);
 
+    void setFloatingActionButtonDrawable(@DrawableRes int drawableResId);
+
     void onMovieCommentUpdated();
+
+    void showSnackbar(@StringRes int stringResId);
 }

@@ -20,12 +20,14 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
 import de.hdodenhof.circleimageview.CircleImageView;
 import imarkusi.soc_net_project.R;
 import imarkusi.soc_net_project.activities.LoginActivity;
 import imarkusi.soc_net_project.activities.MovieDetailsActivity;
 import imarkusi.soc_net_project.adapters.LikedMoviesAdapter;
 import imarkusi.soc_net_project.adapters.MoviesAdapter;
+import imarkusi.soc_net_project.custom.Events;
 import imarkusi.soc_net_project.custom.ItemClickListener;
 import imarkusi.soc_net_project.dagger.components.DaggerDashboardComponent;
 import imarkusi.soc_net_project.dagger.modules.DashboardModule;
@@ -154,5 +156,22 @@ public class DashboardFragment extends BaseFragment implements DashboardView {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(facebookUrl + PreferencesHelper.getUserId()));
         startActivity(intent);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().registerSticky(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStart();
+        EventBus.getDefault().unregister(this);
+    }
+
+    public void onEventMainThread(Events.MovieWatchlistRefresh event){
+        EventBus.getDefault().removeStickyEvent(event);
+        presenter.init();
     }
 }

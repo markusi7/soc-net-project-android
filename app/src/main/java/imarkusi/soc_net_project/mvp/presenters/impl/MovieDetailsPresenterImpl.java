@@ -1,10 +1,13 @@
 package imarkusi.soc_net_project.mvp.presenters.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
+import imarkusi.soc_net_project.R;
 import imarkusi.soc_net_project.adapters.MoviesAdapter;
+import imarkusi.soc_net_project.helpers.PreferencesHelper;
 import imarkusi.soc_net_project.models.Comment;
 import imarkusi.soc_net_project.models.Movie;
 import imarkusi.soc_net_project.mvp.interactors.MovieDetailsInteractor;
@@ -30,7 +33,7 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
             }
             if (response.getReleaseDate() != null && !response.getReleaseDate().isEmpty()) {
                 String[] data = response.getReleaseDate().split("-");
-                String date = data[2] + "." + data[1] + data[0];
+                String date = data[2] + "." + data[1] + "." + data[0] + ".";
                 view.setDate(date);
             }
             if (response.getGenres() != null && !response.getGenres().isEmpty()) {
@@ -46,6 +49,9 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
                 view.displayComments(response.getComments());
                 view.setRating(calculateRating(response.getComments()));
             }
+            int drawableResId = PreferencesHelper.getWatchListIds() != null && PreferencesHelper.getWatchListIds().contains(response.getId()) ?
+                    R.drawable.remove_from_list : R.drawable.add_to_list;
+            view.setFloatingActionButtonDrawable(drawableResId);
         }
 
         @Override
@@ -54,12 +60,45 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
             view.showErrorMessage(errorMessage);
         }
     };
+
     private BaseListener<Void> commentListener =
             new BaseListener<Void>() {
                 @Override
                 public void onSuccess(Void response) {
                     view.hideProgress();
                     view.onMovieCommentUpdated();
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+                    view.hideProgress();
+                    view.showErrorMessage(errorMessage);
+                }
+            };
+
+    private BaseListener<Void> addToWatchListListener =
+            new BaseListener<Void>() {
+                @Override
+                public void onSuccess(Void response) {
+                    view.hideProgress();
+                    view.setFloatingActionButtonDrawable(R.drawable.remove_from_list);
+                    view.showSnackbar(R.string.movie_added_to_watchlist);
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+                    view.hideProgress();
+                    view.showErrorMessage(errorMessage);
+                }
+            };
+
+    private BaseListener<Void> removeFromWatchListListener =
+            new BaseListener<Void>() {
+                @Override
+                public void onSuccess(Void response) {
+                    view.hideProgress();
+                    view.setFloatingActionButtonDrawable(R.drawable.add_to_list);
+                    view.showSnackbar(R.string.movie_removed_from_watchlist);
                 }
 
                 @Override
@@ -87,6 +126,17 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
     @Override
     public void postComment(String movieId, String comment, String rating) {
         interactor.postComment(movieId, comment, rating, commentListener);
+    }
+
+    @Override
+    public void toggleWatchList(String movieId) {
+        view.showProgress();
+        Set<String> ids = PreferencesHelper.getWatchListIds();
+        if (ids != null && ids.contains(movieId)) {
+            interactor.removeFromWatchList(movieId, removeFromWatchListListener);
+        } else {
+            interactor.addToWatchList(movieId, addToWatchListListener);
+        }
     }
 
     @Override
