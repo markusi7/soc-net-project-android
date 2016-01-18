@@ -3,9 +3,11 @@ package imarkusi.soc_net_project.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.RecognizerIntent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -75,6 +77,7 @@ public class SearchActivity extends BaseActivity implements SearchView {
     }
 
     private void setupSearchView() {
+        searchView.setVoiceSearch(true);
         searchView.setBackgroundColor(ContextCompat.getColor(this, R.color.primary));
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
@@ -145,5 +148,20 @@ public class SearchActivity extends BaseActivity implements SearchView {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == MaterialSearchView.REQUEST_VOICE && resultCode == RESULT_OK) {
+            List<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            if (matches != null && matches.size() > 0) {
+                String searchWord = matches.get(0);
+                if (!TextUtils.isEmpty(searchWord)) {
+                    searchView.setQuery(searchWord, true);
+                }
+            }
+            return;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
