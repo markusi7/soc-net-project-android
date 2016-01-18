@@ -24,7 +24,8 @@ public interface APIService {
     String USERS = "/users/me";
     String MOVIES = "/movies";
     String SEARCH = MOVIES + "/search";
-    String WATCH_LIST = MOVIES + "/watched";
+    String WATCH_LIST = MOVIES + "/watchlist";
+    String WATCHED_LIST = MOVIES + "/watched";
     String RECOMMENDED = MOVIES + "/recommended";
     String LIKED_LIST = MOVIES + "/liked";
 

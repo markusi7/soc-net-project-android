@@ -20,33 +20,33 @@ import imarkusi.soc_net_project.networking.BaseListener;
  */
 public class DashboardPresenterImpl implements DashboardPresenter {
 
+    private static final int API_CALLS = 2;
     final DashboardView view;
-
     final DashboardInteractor interactor;
-
-    private static final int API_CALLS = 3;
-
     private AtomicInteger counter = new AtomicInteger();
 
     private BaseListener<User> userListener = new BaseListener<User>() {
         @Override
         public void onSuccess(User response) {
             onCallFinished();
-            if (response.getId() != null && !response.getId().isEmpty()){
+            if (response.getId() != null && !response.getId().isEmpty()) {
                 PreferencesHelper.saveUserId(response.getId());
             }
-            if (response.getId() != null && !response.getId().isEmpty()){
-                String profilePictureUrl = String .format(SocNetApp.getInstance().getString(R.string.facebook_image_url),response.getId());
+            if (response.getId() != null && !response.getId().isEmpty()) {
+                String profilePictureUrl = String.format(SocNetApp.getInstance().getString(R.string.facebook_image_url), response.getId());
                 view.showProfilePicture(profilePictureUrl);
             }
-            if (response.getName() != null && !response.getName().isEmpty()){
+            if (response.getName() != null && !response.getName().isEmpty()) {
                 view.showName(response.getName());
             }
-            if (response.getEmail() != null && !response.getEmail().isEmpty()){
+            if (response.getEmail() != null && !response.getEmail().isEmpty()) {
                 view.showEmail(response.getEmail());
             }
-            if (response.getName() != null && !response.getName().isEmpty()){
+            if (response.getName() != null && !response.getName().isEmpty()) {
                 view.showName(response.getName());
+            }
+            if (response.getWatchlist() != null && !response.getWatchlist().isEmpty()) {
+                view.showWatchList(response.getWatchlist());
             }
         }
 
@@ -114,7 +114,6 @@ public class DashboardPresenterImpl implements DashboardPresenter {
         view.showProgress();
         counter.set(API_CALLS);
         interactor.getUser(userListener);
-        interactor.getWatchList(watchListListener);
         interactor.getLikedList(likedListListener);
     }
 

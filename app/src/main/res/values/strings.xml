@@ -31,6 +31,6 @@
     <string name="confirm_logout">Are you sure you want to log out?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="no_watch_list">You currently don\'t have any movies on your watch list.\nExplore content by swiping right!</string>
+    <string name="no_watch_list">You currently don\'t have any movies in your watch list.\nExplore content by swiping right!</string>
     <string name="liked_list">Facebook Liked Movies</string>
 </resources>
