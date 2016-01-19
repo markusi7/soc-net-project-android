@@ -2,7 +2,7 @@
 A simple Android app created as a part of Project for Social Networks Course at FER.
 
 App is built upon MVP design pattern.
-Networking is done using Retrofit and OkHttp, the API itself was developed by a colleague.
+Networking is done using Retrofit and OkHttp, the API itself was developed by a [colleague](https://github.com/marioradonic).
 
 
 ##App functionality
