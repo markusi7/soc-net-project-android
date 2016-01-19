@@ -53,7 +53,7 @@
             android:id="@+id/liked_list"
             android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/item_occasion_height"/>
+            android:layout_height="@dimen/item_movie_horizontal_height"/>
 
         <TextView
             android:id="@+id/watch_list_header"
@@ -65,7 +65,7 @@
             android:id="@+id/watch_list"
             android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="@dimen/item_movie_horizontal_height"/>
 
         <TextView
             android:id="@+id/empty_watch_list_placeholder"

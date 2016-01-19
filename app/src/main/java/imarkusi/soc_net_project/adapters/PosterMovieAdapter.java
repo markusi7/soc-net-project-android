@@ -18,20 +18,20 @@ import imarkusi.soc_net_project.models.Movie;
 /**
  * Created by markusi on 18/01/16.
  */
-public class LikedMoviesAdapter extends RecyclerView.Adapter<LikedMoviesAdapter.ViewHolder> {
+public class PosterMovieAdapter extends RecyclerView.Adapter<PosterMovieAdapter.ViewHolder> {
 
     private List<Movie> items;
 
     private ItemClickListener<Movie> clickListener;
 
-    public LikedMoviesAdapter(List<Movie> items, ItemClickListener<Movie> clickListener) {
+    public PosterMovieAdapter(List<Movie> items, ItemClickListener<Movie> clickListener) {
         this.items = items;
         this.clickListener = clickListener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie_liked, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie_poster, parent, false));
     }
 
     @Override

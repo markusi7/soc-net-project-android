@@ -20,4 +20,6 @@ public interface DashboardView extends BaseView {
     void showLikedList(List<Movie> movies);
 
     void onLogoutSuccessful();
+
+    void onWatchListEmpty();
 }

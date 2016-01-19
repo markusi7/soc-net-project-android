@@ -50,11 +50,13 @@ public class DashboardPresenterImpl implements DashboardPresenter {
             }
             if (response.getWatchlist() != null && !response.getWatchlist().isEmpty()) {
                 view.showWatchList(response.getWatchlist());
-                Set<String > ids = new HashSet<>();
-                for (Movie movie :response.getWatchlist()){
+                Set<String> ids = new HashSet<>();
+                for (Movie movie : response.getWatchlist()) {
                     ids.add(movie.getId());
                 }
                 PreferencesHelper.saveWatchlistIds(ids);
+            } else {
+                view.onWatchListEmpty();
             }
         }
 

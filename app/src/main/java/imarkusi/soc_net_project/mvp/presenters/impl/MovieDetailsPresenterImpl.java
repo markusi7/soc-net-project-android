@@ -5,8 +5,10 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import de.greenrobot.event.EventBus;
 import imarkusi.soc_net_project.R;
 import imarkusi.soc_net_project.adapters.MoviesAdapter;
+import imarkusi.soc_net_project.custom.Events;
 import imarkusi.soc_net_project.helpers.PreferencesHelper;
 import imarkusi.soc_net_project.models.Comment;
 import imarkusi.soc_net_project.models.Movie;
@@ -83,6 +85,7 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
                     view.hideProgress();
                     view.setFloatingActionButtonDrawable(R.drawable.remove_from_list);
                     view.showSnackbar(R.string.movie_added_to_watchlist);
+                    EventBus.getDefault().postSticky(new Events.MovieWatchlistRefresh());
                 }
 
                 @Override
@@ -99,6 +102,7 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
                     view.hideProgress();
                     view.setFloatingActionButtonDrawable(R.drawable.add_to_list);
                     view.showSnackbar(R.string.movie_removed_from_watchlist);
+                    EventBus.getDefault().postSticky(new Events.MovieWatchlistRefresh());
                 }
 
                 @Override

@@ -182,7 +182,7 @@ public class MovieDetailsActivity extends BaseActivity implements MovieDetailsVi
 
     @Override
     public void showSnackbar(@StringRes int stringResId) {
-        Snackbar.make(appBarLayout, stringResId, Snackbar.LENGTH_LONG);
+        Snackbar.make(appBarLayout, stringResId, Snackbar.LENGTH_LONG).show();
     }
 
     @Override

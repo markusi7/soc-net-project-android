@@ -25,8 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import imarkusi.soc_net_project.R;
 import imarkusi.soc_net_project.activities.LoginActivity;
 import imarkusi.soc_net_project.activities.MovieDetailsActivity;
-import imarkusi.soc_net_project.adapters.LikedMoviesAdapter;
-import imarkusi.soc_net_project.adapters.MoviesAdapter;
+import imarkusi.soc_net_project.adapters.PosterMovieAdapter;
 import imarkusi.soc_net_project.custom.Events;
 import imarkusi.soc_net_project.custom.ItemClickListener;
 import imarkusi.soc_net_project.dagger.components.DaggerDashboardComponent;
@@ -127,17 +126,17 @@ public class DashboardFragment extends BaseFragment implements DashboardView {
     @Override
     public void showWatchList(List<Movie> movies) {
         watchList.setVisibility(View.VISIBLE);
-        MoviesAdapter adapter = new MoviesAdapter(movies, itemClickListener);
+        PosterMovieAdapter adapter = new PosterMovieAdapter(movies, itemClickListener);
         watchList.setHasFixedSize(true);
         watchList.setAdapter(new SlideInRightAnimationAdapter(new AlphaInAnimationAdapter(adapter)));
-        watchList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        watchList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         emptyWatchListPlaceholder.setVisibility(View.GONE);
     }
 
     @Override
     public void showLikedList(List<Movie> movies) {
         likedList.setVisibility(View.VISIBLE);
-        LikedMoviesAdapter adapter = new LikedMoviesAdapter(movies, itemClickListener);
+        PosterMovieAdapter adapter = new PosterMovieAdapter(movies, itemClickListener);
         likedList.setHasFixedSize(true);
         likedList.setAdapter(new SlideInRightAnimationAdapter(new AlphaInAnimationAdapter(adapter)));
         likedList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -148,6 +147,12 @@ public class DashboardFragment extends BaseFragment implements DashboardView {
     public void onLogoutSuccessful() {
         getActivity().finish();
         startActivity(new Intent(getActivity(), LoginActivity.class));
+    }
+
+    @Override
+    public void onWatchListEmpty() {
+        watchList.setVisibility(View.GONE);
+        emptyWatchListPlaceholder.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.profile_image)
