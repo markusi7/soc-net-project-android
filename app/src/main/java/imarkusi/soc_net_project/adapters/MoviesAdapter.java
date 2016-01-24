@@ -1,6 +1,5 @@
 package imarkusi.soc_net_project.adapters;
 
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +32,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_search, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false));
     }
 
     @Override
@@ -43,8 +42,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         setTitle(viewHolder.title, item.getTitle(), item.getReleaseDate());
         if (item.getPosterUrl() != null) {
             ImageHelper.loadPosterFromApi(viewHolder.poster, item.getPosterUrl());
-        } else {
-            viewHolder.poster.setImageDrawable(ContextCompat.getDrawable(viewHolder.poster.getContext(), R.drawable.movie_search_placeholder));
         }
         setGenres(viewHolder.genres, item.getGenres());
         viewHolder.item.setOnClickListener(new View.OnClickListener() {

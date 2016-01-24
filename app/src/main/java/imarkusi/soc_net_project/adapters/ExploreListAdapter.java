@@ -76,7 +76,7 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             default:
             case VIEW_TYPE_MOVIE:
                 return new MoviesAdapter.ViewHolder(LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.item_search, parent, false));
+                        .inflate(R.layout.item_movie, parent, false));
         }
     }
 
@@ -94,8 +94,6 @@ public class ExploreListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 MoviesAdapter.setTitle(viewHolder.title, item.getTitle(), item.getReleaseDate());
                 if (item.getPosterUrl() != null) {
                     ImageHelper.loadPosterFromApi(viewHolder.poster, item.getPosterUrl());
-                } else {
-                    viewHolder.poster.setImageDrawable(ContextCompat.getDrawable(viewHolder.poster.getContext(), R.drawable.movie_search_placeholder));
                 }
                 MoviesAdapter.setGenres(viewHolder.genres, item.getGenres());
                 viewHolder.item.setOnClickListener(new View.OnClickListener() {

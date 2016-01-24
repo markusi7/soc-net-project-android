@@ -17,7 +17,7 @@
             android:id="@+id/poster"
             android:layout_width="@dimen/search_poster_dimension"
             android:layout_height="@dimen/search_poster_dimension"
-            android:src="@drawable/movie_search_placeholder"
+            android:src="@drawable/sad_smiley"
             android:padding="@dimen/smallest_padding"/>
 
         <LinearLayout

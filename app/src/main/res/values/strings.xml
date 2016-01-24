@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Soc-Net-Project</string>
+    <string name="app_name">Movie Mate</string>
 
     <string name="error_unknown">An unknown error has occurred.</string>
     <string name="error_network_unavailable">Network is not available.</string>
